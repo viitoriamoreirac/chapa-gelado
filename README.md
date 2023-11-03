@@ -1,0 +1,1 @@
+# Projeto de uma pseudo-sorveteria, feito para fins avaliativos
