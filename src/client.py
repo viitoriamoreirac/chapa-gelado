@@ -32,19 +32,8 @@ def createClient():
                 cliente_novo = False
     if cliente_novo:
         nome_cliente = input("Digite o nome do cliente: ")
-        opcao = 1
-        while opcao == 1:
-            fez_pedido = input("Esse cliente já fez algum pedido? 1 para sim e 2 para não: ")
-            if fez_pedido == "1":
-                fez_pedido = input("Quantos pedidos foram feitos? ")
-                valor_total_gasto = float(input("Qual o valor total já gasto? "))
-                opcao = 0
-            elif fez_pedido == "2":
-                fez_pedido = 0
-                valor_total_gasto = 0
-                opcao = 0
-            else:
-                print("Opção inválida, tente novamente:")
+        fez_pedido = 0
+        valor_total_gasto = 0
 
         cliente1 = Client(nome_cliente, telefone_cliente, fez_pedido, valor_total_gasto)
 
@@ -56,8 +45,8 @@ def busca(telefone_client):
         if telefone_client == client.telefone:
             print(client)
             encontrado = True
-        if not encontrado:
-            print("Cliente não encontrado.")
+    if not encontrado:
+        print("Cliente não encontrado.")
 
 def read_client():
     opcao = input("Deseja visualizar todos os clientes(1) ou realizar uma pesquisa(2)? ")
@@ -70,15 +59,43 @@ def read_client():
     else:
         print("Opção inválida.")
 
+def update_client():
+    telefone_client = input("Digite o telefone do cliente que deseja realizar a alteração: ")
+    busca(telefone_client)
 
-def main():
-    createClient()
-    createClient()
-    read_client()
-    read_client()
-
-if __name__ == "__main__":
-    main()
+    for client in clients:
+        if telefone_client == client.telefone:
+            opcao = input("Qual dado deseja alterar? Digite 1 para nome, 2 para telefone, 3 para pedidos feitos e 4 para valor total gasto: ")
+            if opcao == "1":
+                client.nome = input("Digite o novo nome: ")
+            elif opcao == "2":
+                numero_invalido = True
+                while numero_invalido:
+                    telefone_client = (input("Digite o novo telefone do cliente: "))
+                    padrao = re.compile(r'^\d{2}9\d{8}$')
+                    if padrao.match(telefone_client):
+                        numero_invalido = False
+                        client.telefone = telefone_client
+                    else:
+                        print("Número digitado no formato incorreto, tente novamente.")
+                        numero_invalido = True
+            elif opcao == "3":
+                client.total_pedidos = input("Quantos pedidos foram feitos? ")
+            elif opcao == "4":
+                client.valor_total_gasto = float(input("Qual o valor total gasto?"))
+            else: 
+                print("Opção inválida.")
+            
+def delete_client():
+    telefone_client = input("Digite o telefone do cliente que deseja deletar: ")
+    busca(telefone_client)
+    deletar = input("Deseja deletar o cliente acima? Digite 1. ")
+    if deletar == "1":
+        for client in clients:
+            if telefone_client == client.telefone:
+                clients.remove(client)
+    else:
+        print("Opção inválida.")
 
 
 
