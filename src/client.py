@@ -1,5 +1,5 @@
 import re
-
+import json
 
 class Client:
     def __init__(self, nome, telefone, total_pedidos, valor_total_gasto):
@@ -11,12 +11,26 @@ class Client:
     def __str__(self):
         return f"Nome: {self.nome}\nTelefone: {self.telefone}\nTotal de Pedidos: {self.total_pedidos}\nValor Total Gasto: R${self.valor_total_gasto:.2f}"
 
-clients = []
+def load_clients():
+    try:
+        with open('clients.txt', 'r') as file:
+            clients_data = json.load(file)
+            clients = [Client(**data) for data in clients_data]
+        return clients
+    except FileNotFoundError:
+        return []
 
-def createClient():
+def save_clients(clients):
+    with open('clients.txt', 'w') as file:
+        clients_data = [vars(client) for client in clients]
+        json.dump(clients_data, file, indent=2)
+
+clients = load_clients()
+
+def create_client():
     numero_invalido = True
     while numero_invalido:
-        telefone_cliente = (input("Digite o telefone do cliente: "))
+        telefone_cliente = input("Digite o telefone do cliente: ")
         padrao = re.compile(r'^\d{2}9\d{8}$')
         if padrao.match(telefone_cliente):
             numero_invalido = False
@@ -25,11 +39,12 @@ def createClient():
             numero_invalido = True
 
     cliente_novo = True
-    if clients != []:
+    if clients:
         for client in clients:
             if telefone_cliente == client.telefone:
                 print("Cliente já cadastrado")
                 cliente_novo = False
+
     if cliente_novo:
         nome_cliente = input("Digite o nome do cliente: ")
         fez_pedido = 0
@@ -38,6 +53,7 @@ def createClient():
         cliente1 = Client(nome_cliente, telefone_cliente, fez_pedido, valor_total_gasto)
 
         clients.append(cliente1)
+        save_clients(clients)
 
 def busca(telefone_client):
     encontrado = False
@@ -71,7 +87,7 @@ def update_client():
             elif opcao == "2":
                 numero_invalido = True
                 while numero_invalido:
-                    telefone_client = (input("Digite o novo telefone do cliente: "))
+                    telefone_client = input("Digite o novo telefone do cliente: ")
                     padrao = re.compile(r'^\d{2}9\d{8}$')
                     if padrao.match(telefone_client):
                         numero_invalido = False
@@ -86,16 +102,14 @@ def update_client():
             else: 
                 print("Opção inválida.")
             
-def delete_client():
-    telefone_client = input("Digite o telefone do cliente que deseja deletar: ")
-    busca(telefone_client)
-    deletar = input("Deseja deletar o cliente acima? Digite 1. ")
-    if deletar == "1":
-        for client in clients:
-            if telefone_client == client.telefone:
-                clients.remove(client)
-    else:
-        print("Opção inválida.")
+            save_clients(clients)
 
+
+
+create_client()
+create_client()
+create_client()
+update_client()
+read_client()
 
 
