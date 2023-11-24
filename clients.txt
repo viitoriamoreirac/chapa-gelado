@@ -2,19 +2,25 @@
   {
     "nome": "fulaninha",
     "telefone": "82999999999",
-    "total_pedidos": 0,
-    "valor_total_gasto": 0
+    "total_pedidos": 2,
+    "valor_total_gasto": 18.0
   },
   {
     "nome": "vitoria",
     "telefone": "82996659999",
-    "total_pedidos": 0,
-    "valor_total_gasto": 0
+    "total_pedidos": 3,
+    "valor_total_gasto": 9.0
   },
   {
     "nome": "caroline",
     "telefone": "82991029999",
     "total_pedidos": 0,
     "valor_total_gasto": 0
+  },
+  {
+    "nome": "emesson",
+    "telefone": "82987654321",
+    "total_pedidos": 1,
+    "valor_total_gasto": 5.5
   }
 ]

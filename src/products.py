@@ -47,7 +47,7 @@ def create_product():
         products.append(produto1)
         save_products(products)
 
-def busca(id_product):
+def busca_produto(id_product):
     encontrado = False
     for product in products:
         if id_product == product.id:
@@ -56,6 +56,8 @@ def busca(id_product):
     if not encontrado:
         print("Produto não encontrado.")
 
+    return encontrado
+
 def read_product():
     opcao = input("Deseja visualizar todos os produtos(1) ou realizar uma pesquisa(2)? ")
     if opcao == "1":
@@ -63,13 +65,13 @@ def read_product():
             print(product)
     elif opcao == "2":
         id_product = input("Digite o ID do produto a ser pesquisado: ")
-        busca(id_product)
+        busca_produto(id_product)
     else:
         print("Opção inválida.")
 
 def update_product():
     id_product = input("Digite o ID do produto que deseja realizar a alteração: ")
-    busca(id_product)
+    busca_produto(id_product)
 
     for product in products:
         if id_product == product.id:
@@ -90,11 +92,6 @@ def update_storage(id_product):
     for product in products:
         if id_product == product.id:
             product.quantidade_disponivel = product.quantidade_disponivel - 1
-
-        save_products(products)
-
-
-
-read_product()
-update_storage("123")
-read_product()
+            valor = product.valor
+            save_products(products)
+            return valor
