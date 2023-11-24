@@ -44,9 +44,18 @@ def create_client():
             if telefone_cliente == client.telefone:
                 print("Cliente já cadastrado")
                 cliente_novo = False
+                break
 
     if cliente_novo:
-        nome_cliente = input("Digite o nome do cliente: ")
+        nome_cliente = input("Digite o nome do cliente: ").lower()
+        
+        for client in clients:
+            if nome_cliente == client.nome.lower():
+                print("Cliente já cadastrado pelo nome.")
+                cliente_novo = False
+                break
+
+    if cliente_novo:
         fez_pedido = 0
         valor_total_gasto = 0
 
@@ -83,7 +92,7 @@ def update_client():
         if telefone_client == client.telefone:
             opcao = input("Qual dado deseja alterar? Digite 1 para nome, 2 para telefone, 3 para pedidos feitos e 4 para valor total gasto: ")
             if opcao == "1":
-                client.nome = input("Digite o novo nome: ")
+                client.nome = (input("Digite o novo nome: ")).lower()
             elif opcao == "2":
                 numero_invalido = True
                 while numero_invalido:
@@ -104,5 +113,10 @@ def update_client():
             
             save_clients(clients)
 
-
+def update_pedidos_feitos(nome_cliente):
+    for client in clients:
+        if nome_cliente == client.nome:
+            client.total_pedidos = client.total_pedidos - 1
+        
+        save_clients(clients)
 
