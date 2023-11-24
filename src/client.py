@@ -106,10 +106,3 @@ def update_client():
 
 
 
-create_client()
-create_client()
-create_client()
-update_client()
-read_client()
-
-
