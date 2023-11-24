@@ -36,7 +36,7 @@ def realiza_compra():
 
 
 def crud_cliente():
-    opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n1 - Cadastrar um novo cliente. \n2 - Visualizar clientes existentes. \n3 - Atualizar dados de algum cliente. \n4 - Deletar cliente existente. \n5 - Voltar ao menu principal.\nOpção: "))
+    opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n1 - Cadastrar um novo cliente. \n2 - Visualizar clientes existentes. \n3 - Atualizar dados de algum cliente. \n4 - Deletar cliente existente. \n5 - Visualizar cliente que mais consumiu. \n6 - Voltar ao menu principal.\nOpção: "))
     if opcao == 1:
         create_client()
     elif opcao == 2:
@@ -47,6 +47,8 @@ def crud_cliente():
         nome_client = input("\nDigite o nome do cliente que deseja deletar: ")
         delete_client(nome_client)
     elif opcao == 5:
+        compara_clients()
+    elif opcao == 6:
         print("\nRetornando ao menu principal.")
     else:
         print("\nOpção inválida, tente novamente.")

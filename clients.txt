@@ -8,8 +8,8 @@
   {
     "nome": "vitoria",
     "telefone": "82996659999",
-    "total_pedidos": 3,
-    "valor_total_gasto": 9.0
+    "total_pedidos": 4,
+    "valor_total_gasto": 21.0
   },
   {
     "nome": "emesson",

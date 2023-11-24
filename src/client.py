@@ -145,3 +145,13 @@ def update_valor_gasto(nome_cliente, valor_gasto):
             client.valor_total_gasto = client.valor_total_gasto + valor_gasto
 
             save_clients(clients)
+
+def compara_clients():
+    maior = 0
+    nome_cliente = ""
+    for client in clients:
+        if client.valor_total_gasto > maior:
+            maior = client.valor_total_gasto
+            nome_cliente = client.nome
+    
+    print(f"O cliente que mais consumiu foi {nome_cliente} com um total de R$ {maior:.2f} gasto na sorveteria.")

@@ -10,5 +10,11 @@
     "nome": "sundae de morango",
     "valor": 5.5,
     "quantidade_disponivel": 9
+  },
+  {
+    "id": "126",
+    "nome": "milk shake",
+    "valor": 12.0,
+    "quantidade_disponivel": 6
   }
 ]
