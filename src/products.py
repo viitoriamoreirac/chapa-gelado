@@ -87,6 +87,21 @@ def update_product():
             
             save_products(products)
 
+def delete_product(id_product):
+    global products
+    product_found = False
+
+    for product in products:
+        if id_product == product.id:
+            products.remove(product)
+            save_products(products)
+            print(f"Produto {id_product} removido com sucesso.")
+            product_found = True
+            break
+
+    if not product_found:
+        print("Produto não encontrado.")
+
 
 def update_storage(id_product):
     for product in products:

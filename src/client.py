@@ -116,6 +116,22 @@ def update_client():
             
             save_clients(clients)
 
+
+def delete_client(nome_cliente):
+    global clients
+    client_found = False
+
+    for client in clients:
+        if nome_cliente == client.nome:
+            clients.remove(client)
+            save_clients(clients)
+            print(f"Cliente {nome_cliente} removido com sucesso.")
+            client_found = True
+            break
+
+    if not client_found:
+        print("Cliente não encontrado.")
+
 def update_pedidos_feitos(nome_cliente):
     for client in clients:
         if nome_cliente == client.nome:

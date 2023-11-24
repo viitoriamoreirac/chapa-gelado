@@ -6,12 +6,6 @@
     "quantidade_disponivel": 10
   },
   {
-    "id": "124",
-    "nome": "casquinha de chocolate",
-    "valor": 3.0,
-    "quantidade_disponivel": 13
-  },
-  {
     "id": "125",
     "nome": "sundae de morango",
     "valor": 5.5,

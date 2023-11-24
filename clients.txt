@@ -12,12 +12,6 @@
     "valor_total_gasto": 9.0
   },
   {
-    "nome": "caroline",
-    "telefone": "82991029999",
-    "total_pedidos": 0,
-    "valor_total_gasto": 0
-  },
-  {
     "nome": "emesson",
     "telefone": "82987654321",
     "total_pedidos": 1,
