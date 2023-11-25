@@ -14,14 +14,32 @@ A demanda principal identificada para o estabelecimento se trata da necessidade 
 
 O projeto tem como objetivo fornecer ao funcionário, ou proprietário do estabelecimento, o controle dos produtos e clientes do estabelecimento, podendo cadastrar, visualizar e atualizar dados sobre os mesmos.
 
-### Requisitos Desenvolvidos
-
-
 ### Atendimento pelo Projeto
 
 O projeto atendeu às demandas estabelecidas ao fornecer uma aplicação que permite o cadastro de clientes e produtos, a realização de uma venda e o controle do estoque e valor vendido.
 
 ### Utilização de Estruturas no Código
+
+#### If/Elif/Else
+Utilizado em várias funções, principalmente nas funções de menu de opções, no arquivo `main.py` -> `main()`, `crud_cliente()`, `crud_produto()`
+
+#### While
+Utilizado na função `main()`, contida no arquivo `main.py` para repetir o menu inicial, enquanto solicitado.
+
+#### Subprogramas
+Utilizado no projeto  inteiro.
+
+#### Matrizes/listas
+Um dos exemplos está contido no arquivo `client.py` na função `load_clients()`
+
+#### String
+Foi utilizada string no projeto inteiro, um dos exemplos está na função `busca_cliente(nome_cliente)` contida no arquivo `client.py`
+
+#### Estruturas
+Foi usada estruturas nos arquivos `clients.txt` e `products.txt`
+
+#### Arquivos
+Foi usada interação entre arquivos no projeto inteiro, um exemplo está na função `atualiza_dados_apos_compra(nome_cliente, id_produto)` no arquivo `aquisition.py`
 
 
 ### Requisitos Funcionais
