@@ -30,28 +30,28 @@ clients = load_clients()
 def create_client():
     numero_invalido = True
     while numero_invalido:
-        telefone_cliente = input("Digite o telefone do cliente: ")
+        telefone_cliente = input("\nDigite o telefone do cliente: ")
         padrao = re.compile(r'^\d{2}9\d{8}$')
         if padrao.match(telefone_cliente):
             numero_invalido = False
         else:
-            print("Número digitado no formato incorreto, tente novamente.")
+            print("\nNúmero digitado no formato incorreto, tente novamente.")
             numero_invalido = True
 
     cliente_novo = True
     if clients:
         for client in clients:
             if telefone_cliente == client.telefone:
-                print("Cliente já cadastrado")
+                print("\nCliente já cadastrado")
                 cliente_novo = False
                 break
 
     if cliente_novo:
-        nome_cliente = input("Digite o nome do cliente: ").lower()
+        nome_cliente = input("\nDigite o nome do cliente: ").lower()
         
         for client in clients:
             if nome_cliente == client.nome.lower():
-                print("Cliente já cadastrado pelo nome.")
+                print("\nCliente já cadastrado pelo nome.")
                 cliente_novo = False
                 break
 
@@ -63,6 +63,8 @@ def create_client():
 
         clients.append(cliente1)
         save_clients(clients)
+
+        print("\nCliente cadastrado com sucesso!")
 
 
 def busca_cliente(nome_cliente):
@@ -115,6 +117,7 @@ def update_client():
                 print("\nOpção inválida.")
             
             save_clients(clients)
+            print("\nCliente atualizado com sucesso!")
 
 
 def delete_client(nome_cliente):
@@ -130,7 +133,7 @@ def delete_client(nome_cliente):
             break
 
     if not client_found:
-        print("Cliente não encontrado.")
+        print("\nCliente não encontrado.")
 
 def update_pedidos_feitos(nome_cliente):
     for client in clients:
@@ -154,4 +157,4 @@ def compara_clients():
             maior = client.valor_total_gasto
             nome_cliente = client.nome
     
-    print(f"O cliente que mais consumiu foi {nome_cliente} com um total de R$ {maior:.2f} gasto na sorveteria.")
+    print(f"O cliente que mais consumiu foi {nome_cliente} com um total de R$ {maior:.2f} gasto na sorveteria.\n")

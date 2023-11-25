@@ -28,13 +28,13 @@ def save_products(products):
 products = load_products()
 
 def create_product():
-    id_product = input("Digite o ID do produto: ")
+    id_product = input("\nDigite o ID do produto: ")
 
     produto_novo = True
     if products:
         for product in products:
             if id_product == product.id:
-                print("Produto já cadastrado")
+                print("\nProduto já cadastrado")
                 produto_novo = False
 
     if produto_novo:
@@ -46,6 +46,7 @@ def create_product():
 
         products.append(produto1)
         save_products(products)
+        print("\nProduto criado com sucesso!")
 
 def busca_produto(id_product):
     encontrado = False
@@ -54,38 +55,39 @@ def busca_produto(id_product):
             print(product)
             encontrado = True
     if not encontrado:
-        print("Produto não encontrado.")
+        print("\nProduto não encontrado.")
 
     return encontrado
 
 def read_product():
-    opcao = input("Deseja visualizar todos os produtos(1) ou realizar uma pesquisa(2)? ")
+    opcao = input("\nDeseja visualizar todos os produtos(1) ou realizar uma pesquisa(2)? ")
     if opcao == "1":
         for product in products:
             print(product)
     elif opcao == "2":
-        id_product = input("Digite o ID do produto a ser pesquisado: ")
+        id_product = input("\nDigite o ID do produto a ser pesquisado: ")
         busca_produto(id_product)
     else:
-        print("Opção inválida.")
+        print("\nOpção inválida.")
 
 def update_product():
-    id_product = input("Digite o ID do produto que deseja realizar a alteração: ")
+    id_product = input("\nDigite o ID do produto que deseja realizar a alteração: ")
     busca_produto(id_product)
 
     for product in products:
         if id_product == product.id:
-            opcao = input("Qual dado deseja alterar? Digite 1 para nome, 2 para valor e 3 para quantidade disponível: ")
+            opcao = input("\nQual dado deseja alterar? Digite 1 para nome, 2 para valor e 3 para quantidade disponível: ")
             if opcao == "1":
-                product.nome = input("Digite o novo nome: ")
+                product.nome = input("\nDigite o novo nome: ")
             elif opcao == "2":
-                product.valor = float(input("Digite o novo valor: "))
+                product.valor = float(input("\nDigite o novo valor: "))
             elif opcao == "3":
-                product.quantidade_disponivel = int(input("Qual a quantidade disponível? "))
+                product.quantidade_disponivel = int(input("\nQual a quantidade disponível? "))
             else: 
-                print("Opção inválida.")
+                print("\nOpção inválida.")
             
             save_products(products)
+            print("\nProduto atualizado com sucesso!")
 
 def delete_product(id_product):
     global products
@@ -95,12 +97,12 @@ def delete_product(id_product):
         if id_product == product.id:
             products.remove(product)
             save_products(products)
-            print(f"Produto {id_product} removido com sucesso.")
+            print(f"Produto {id_product} removido com sucesso.\n")
             product_found = True
             break
 
     if not product_found:
-        print("Produto não encontrado.")
+        print("\nProduto não encontrado.")
 
 
 def update_storage(id_product):

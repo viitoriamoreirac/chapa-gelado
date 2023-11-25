@@ -5,7 +5,8 @@ from acquisition import *
 def main():
     opcao = 0
     while opcao != 4:
-        opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n1 - Realizar compra. \n2 - Criar, editar ou visualizar clientes. \n3 - Criar, editar ou visualizar produtos. \n4 - Sair.\nOpção: "))
+        separador()
+        opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n\n1 - Realizar compra. \n2 - Criar, editar ou visualizar clientes. \n3 - Criar, editar ou visualizar produtos. \n4 - Sair.\n\nOpção: "))
 
         if opcao == 1:
             realiza_compra()
@@ -19,9 +20,11 @@ def main():
             print("\nOpção inválida, tente novamente.")
 
 
-
+def separador():
+    print("\n***********************************************************************************")
 
 def realiza_compra():
+    separador()
     nome_cliente = input("\nDigite o nome do cliente: ")
     cliente_encontrado = busca_cliente(nome_cliente)
     if cliente_encontrado:
@@ -30,13 +33,14 @@ def realiza_compra():
         if produto_encontrado:
             atualiza_dados_apos_compra(nome_cliente, id_produto)
         
-            print("\nPedido feito!")
+            print("\nCompra efetuada!")
 
 
 
 
 def crud_cliente():
-    opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n1 - Cadastrar um novo cliente. \n2 - Visualizar clientes existentes. \n3 - Atualizar dados de algum cliente. \n4 - Deletar cliente existente. \n5 - Visualizar cliente que mais consumiu. \n6 - Voltar ao menu principal.\nOpção: "))
+    separador()
+    opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n\n1 - Cadastrar um novo cliente. \n2 - Visualizar clientes existentes. \n3 - Atualizar dados de algum cliente. \n4 - Deletar cliente existente. \n5 - Visualizar cliente que mais consumiu. \n6 - Voltar ao menu principal.\n\nOpção: "))
     if opcao == 1:
         create_client()
     elif opcao == 2:
@@ -56,7 +60,8 @@ def crud_cliente():
 
 
 def crud_produto():
-    opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n1 - Cadastrar um novo produto. \n2 - Visualizar produtos existentes. \n3 - Atualizar dados de algum produto. \n4 - Deletar produto existente. \n5 - Voltar ao menu principal.\nOpção: "))
+    separador()
+    opcao = int(input("\nDigite o numeral correspondente a opção que deseja: \n\n1 - Cadastrar um novo produto. \n2 - Visualizar produtos existentes. \n3 - Atualizar dados de algum produto. \n4 - Deletar produto existente. \n5 - Voltar ao menu principal.\n\nOpção: "))
     if opcao == 1:
         create_product()
     elif opcao == 2:
@@ -64,7 +69,7 @@ def crud_produto():
     elif opcao == 3:
         update_product()
     elif opcao == 4:
-        id_product = input("Digite o ID do produto que deseja deletar: ")
+        id_product = input("\nDigite o ID do produto que deseja deletar: ")
         delete_product(id_product)
     elif opcao == 5:
         print("\nRetornando ao menu principal.")
